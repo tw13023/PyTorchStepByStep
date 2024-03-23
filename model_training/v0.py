@@ -1,21 +1,20 @@
-
-# Defines number of epochs
+# model training 
+# define number of epochs 
 n_epochs = 1000
 
+# set model into train mode 
 for epoch in range(n_epochs):
-    # Sets model to TRAIN mode
-    model.train()
 
-    # Step 1 - Computes model's predicted output - forward pass
+    # Step 1 forward pass, compute the prediction 
+    model.train()
     yhat = model(x_train_tensor)
     
-    # Step 2 - Computes the loss
+    # Step 2 compute the loss 
     loss = loss_fn(yhat, y_train_tensor)
 
-    # Step 3 - Computes gradients for both "b" and "w" parameters
+    # Step 3 backward pass, compute the gradients
     loss.backward()
-    
-    # Step 4 - Updates parameters using gradients and 
-    # the learning rate
+
+    # Step 4 update the parameters using gradients and the learning rate
     optimizer.step()
     optimizer.zero_grad()
